@@ -75,13 +75,13 @@ FPMsJKfgpYJ/1zHdhJw57R86zbizpfaF06VFLm7x6XKV7g==
     }
     
     func testAESEncryption() throws {
-        let decrypted = try! DecryptedMessage(decryptedString: "Hello World!")
+        let decrypted = try! DecryptedValue(decryptedString: "Hello World!")
         let encrypted = try! decrypted.encrypted(using: aes)
         XCTAssertEqual("aE0Pq1ddC6a1agsa0RI2NQ==", encrypted.base64String)
     }
     
     func testAESDecryption() throws {
-        let encrypted = try! EncryptedMessage(encryptedString: "aE0Pq1ddC6a1agsa0RI2NQ==")
+        let encrypted = try! EncryptedValue(encryptedString: "aE0Pq1ddC6a1agsa0RI2NQ==")
         let decrypted = try! encrypted.decrypted(using: aes)
         XCTAssertEqual("Hello World!", try! decrypted.string())
     }
@@ -92,7 +92,7 @@ FPMsJKfgpYJ/1zHdhJw57R86zbizpfaF06VFLm7x6XKV7g==
             privateKey: rsaPrivateKeyClient,
             padding: .OAEP
         )
-        let decrypted = try! DecryptedMessage(decryptedString: "Hello World!")
+        let decrypted = try! DecryptedValue(decryptedString: "Hello World!")
         let encrypted = try! decrypted.encrypted(using: rsa)
         XCTAssertTrue(!encrypted.data.isEmpty)
     }
@@ -103,7 +103,7 @@ FPMsJKfgpYJ/1zHdhJw57R86zbizpfaF06VFLm7x6XKV7g==
             privateKey: rsaPrivateKeyServer,
             padding: .OAEP
         )
-        let encrypted = try! EncryptedMessage(encryptedString: "SqiBtHOikeoII2+CRkM7/65eC6sAXQn3DuTQdVnX4xn1w/Pl88djP1qOWyPtwOF5SCxgBusLrJc1i7xK2bTESjjjo2zLiMmgYb9otRO2lH3v4ARqPliORAUyqLuyFKNBnDz5bZp8O7/9rtigqxT2iU6psoGuS9sdS5cepyGtYm0=")
+        let encrypted = try! EncryptedValue(encryptedString: "SqiBtHOikeoII2+CRkM7/65eC6sAXQn3DuTQdVnX4xn1w/Pl88djP1qOWyPtwOF5SCxgBusLrJc1i7xK2bTESjjjo2zLiMmgYb9otRO2lH3v4ARqPliORAUyqLuyFKNBnDz5bZp8O7/9rtigqxT2iU6psoGuS9sdS5cepyGtYm0=")
         let decrypted = try! encrypted.decrypted(using: rsa)
         XCTAssertEqual("Hello World!", try! decrypted.string())
     }

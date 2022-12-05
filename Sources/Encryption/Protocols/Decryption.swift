@@ -7,12 +7,12 @@
 
 import Foundation
 
-/// Represents object capable of performing decryption of EncryptedMessage to Data
+/// Represents object capable of performing decryption of EncryptedValue to Data
 public protocol Decryption {
     
-    /// Performs decryption of EncryptedMessage to Data
-    /// - Parameter message: EncryptedMessage object containing data in encrypted form.
-    /// - Returns: Data with decrypted form of EncryptedMessage
-    func decryptedData(_ message: EncryptedMessage) throws -> Data
+    /// Performs decryption of EncryptedValue to Data
+    /// - Parameter message: EncryptedValue object containing data in encrypted form.
+    /// - Returns: Data with decrypted form of EncryptedValue
+    func decryptedData(_ message: EncryptedValue) throws -> Data
 
 }

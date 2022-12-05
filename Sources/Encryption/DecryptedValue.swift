@@ -2,12 +2,12 @@ import Foundation
 import CommonCrypto
 
 /// Structure containing data in decrypted form. It can be created directly from data or received as a result of decryption process.
-public struct DecryptedMessage: EncryptionMessageProtocol {
+public struct DecryptedValue: EncryptionMessageProtocol {
 
     public let data: Data
     public let encoding: String.Encoding
     
-    /// Initializes DecryptedMessage with string value
+    /// Initializes DecryptedValue with string value
     /// - Parameters:
     ///   - decryptedString: String value in decrypted form.
     ///   - encoding: Encoding used for encrypting. By default equals UTF-8.
@@ -18,7 +18,7 @@ public struct DecryptedMessage: EncryptionMessageProtocol {
         self.init(decryptedData: data, encoding: encoding)
     }
     
-    /// Initializes DecryptedMessage with data value
+    /// Initializes DecryptedValue with data value
     /// - Parameters:
     ///   - data: Data value in decrypted form.
     ///   - encoding: Encoding used for encrypting. By default equals UTF-8.
@@ -27,7 +27,7 @@ public struct DecryptedMessage: EncryptionMessageProtocol {
         self.data = data
     }
     
-    /// Initializes DecryptedMessage from data loaded from file in application bundle
+    /// Initializes DecryptedValue from data loaded from file in application bundle
     /// - Parameters:
     ///   - fileName: Name of file to be loaded from app bundle.
     ///   - bundle: Bundle to use for loading file.
@@ -42,10 +42,10 @@ public struct DecryptedMessage: EncryptionMessageProtocol {
     
     /// Performs encryption of data
     /// - Parameter encryption: Algorithm implementation used for encryption.
-    /// - Returns: Encrypted form of data as EncryptedMessage.
-    public func encrypted(using encryption: Encryption) throws -> EncryptedMessage {
+    /// - Returns: Encrypted form of data as EncryptedValue.
+    public func encrypted(using encryption: Encryption) throws -> EncryptedValue {
         let data: Data = try encrypt(using: encryption)
-        return EncryptedMessage(encryptedData: data, encoding: encoding)
+        return EncryptedValue(encryptedData: data, encoding: encoding)
     }
     
     /// Performs encryption of data

@@ -8,12 +8,12 @@
 import Foundation
 import CommonCrypto
 
-public struct EncryptedMessage: EncryptionMessageProtocol {
+public struct EncryptedValue: EncryptionMessageProtocol {
 
     public let data: Data
     public let encoding: String.Encoding
 
-    /// Initializes EncryptedMessage using Base64 string containing encrypted data.
+    /// Initializes EncryptedValue using Base64 string containing encrypted data.
     /// - Parameters:
     ///   - encryptedString: Base64 representation of encrypted data.
     ///   - encoding: Encoding used for decrypting. By default equals UTF-8.
@@ -24,7 +24,7 @@ public struct EncryptedMessage: EncryptionMessageProtocol {
         self.init(encryptedData: data, encoding: encoding)
     }
     
-    /// Initializes EncryptedMessage using encrypted data.
+    /// Initializes EncryptedValue using encrypted data.
     /// - Parameters:
     ///   - data: Data in encrypted form.
     ///   - encoding: Encoding used for decrypting. By default equals UTF-8.
@@ -33,7 +33,7 @@ public struct EncryptedMessage: EncryptionMessageProtocol {
         self.data = data
     }
     
-    /// Initializes EncryptedMessage from data loaded from file in application bundle.
+    /// Initializes EncryptedValue from data loaded from file in application bundle.
     /// This can be used for example to load API key encrypted in app bundle.
     /// - Parameters:
     ///   - fileName: Name of file to be loaded from app bundle.
@@ -49,10 +49,10 @@ public struct EncryptedMessage: EncryptionMessageProtocol {
     
     /// Performs decryption of data
     /// - Parameter decryption: Algorithm implementation used for decryption.
-    /// - Returns: Decrypted form of data as DecryptedMessage.
-    public func decrypted(using decryption: Decryption) throws -> DecryptedMessage {
+    /// - Returns: Decrypted form of data as DecryptedValue.
+    public func decrypted(using decryption: Decryption) throws -> DecryptedValue {
         let data: Data = try decrypt(using: decryption)
-        return DecryptedMessage(decryptedData: data, encoding: encoding)
+        return DecryptedValue(decryptedData: data, encoding: encoding)
     }
 
     /// Performs decryption of data

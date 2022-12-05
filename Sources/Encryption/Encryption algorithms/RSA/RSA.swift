@@ -10,11 +10,11 @@ public struct RSA: Encryption, Decryption {
         self.decryption = RSADecryption(privateKey: privateKey, padding: padding)
     }
     
-    public func encryptedData(_ message: DecryptedMessage) throws -> Data {
+    public func encryptedData(_ message: DecryptedValue) throws -> Data {
         try encryption.encryptedData(message)
     }
     
-    public func decryptedData(_ message: EncryptedMessage) throws -> Data {
+    public func decryptedData(_ message: EncryptedValue) throws -> Data {
         try decryption.decryptedData(message)
     }
     
@@ -30,7 +30,7 @@ public struct RSAEncryption: Encryption {
     let key:     RSAKey
     let padding: SecPadding
     
-    public func encryptedData(_ message: DecryptedMessage) throws -> Data {
+    public func encryptedData(_ message: DecryptedValue) throws -> Data {
         try convertRSADataBytes(message: message, key: key.secureKey, padding: padding, action: .encryption)
     }
     
@@ -46,7 +46,7 @@ public struct RSADecryption: Decryption {
     let key:     RSAKey
     let padding: SecPadding
     
-    public func decryptedData(_ message: EncryptedMessage) throws -> Data {
+    public func decryptedData(_ message: EncryptedValue) throws -> Data {
         try convertRSADataBytes(message: message, key: key.secureKey, padding: padding, action: .decryption)
     }
     
