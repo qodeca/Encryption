@@ -1,22 +1,22 @@
-# Encryption
+# Encryption Framework
 
-`Encryption` is a Swift framework for data encryption and decryption with `AES` and `RSA` algorithms.
+The `Encryption` framework is a Swift package that provides data encryption and decryption using the `AES` and `RSA` algorithms.
 
 ## Installation
 
-You can use the `Swift Package Manager` to install the framework.
+To install the framework using the `Swift Package Manager`, follow these steps:
 
-1. Open your project in `Xcode`.
+1. Open your project in Xcode.
 2. Select the `xcodeproject` file in the navigator.
-3. In `Frameworks, Libraries, and Embedded Content`, press the `+` button.
+3. In the "Frameworks, Libraries, and Embedded Content" section, press the `+` button.
 4. Select `Add Other...`, then `Add package dependency`.
 5. Enter the framework URL in the search field: https://github.com/qodeca/Encryption
 6. Press `Add package` and confirm in the dialog window by pressing `Add package`.
 
 ## Configuration
 
-In order to use encryption in your code you need to import encryption framework using `import Encryption`.
-To use `AES` or `RSA` encryption you will need to provide encryption keys to these algorithms. You can load them from `String` or from file in `application bundle`. Remember not to store sensitive keys directly in unencrypted form, as this way they could be retrived from the application.
+To use the encryption features in your code, you need to import the `Encryption` framework using `import Encryption`.
+To use `AES` or `RSA` encryption, you will need to provide encryption keys to these algorithms. You can load these keys from a `String` or from a file in the application bundle. Be sure not to store sensitive keys in unencrypted form, as they could be retrieved from the application.
 
 ## Examples
 
