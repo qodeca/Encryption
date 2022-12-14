@@ -22,7 +22,7 @@ To use `AES` or `RSA` encryption you will need to provide encryption keys to the
 
 ### AES
 
-```
+```swift
 import Encryption
 import CommonCrypto
 
@@ -60,7 +60,7 @@ aesWrapper.decrypt(message: "aE0Pq1ddC6a1agsa0RI2NQ==")
 
 ### RSA
 
-```
+```swift
 import Encryption
 import CommonCrypto
 
