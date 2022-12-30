@@ -6,6 +6,7 @@ The `Encryption` framework is a Swift package that provides data encryption and 
 
 To install the framework using the `Swift Package Manager`, follow these steps:
 
+
 1. Open your project in Xcode.
 2. Select the `xcodeproject` file in the navigator.
 3. In the "Frameworks, Libraries, and Embedded Content" section, press the `+` button.
