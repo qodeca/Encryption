@@ -35,9 +35,10 @@ public struct AES: Encryption, Decryption {
             }
         }
         
-        switch Int(cryptStatus) {
-        case kCCSuccess: convertedBytes.removeSubrange(numBytesConverted..<convertedBytes.count)
-        default: throw AESEncryptionError.encryptionOrDecryptionFailed(status: cryptStatus)
+        if Int(cryptStatus) == kCCSuccess {
+            convertedBytes.removeSubrange(numBytesConverted..<convertedBytes.count)
+        } else {
+            throw AESEncryptionError.encryptionOrDecryptionFailed(status: cryptStatus)
         }
         
         return convertedBytes
