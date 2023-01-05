@@ -20,16 +20,16 @@ public struct AES: Encryption, Decryption {
     }
     
     private func convertAESBytes(message: EncryptionMessageProtocol, key: AESKey, options: CCOptions, action: CryptographicAction) throws -> Data {
-        let cryptLength = size_t(message.data.count + key.size)
+        let expectedDataLength = size_t(message.data.count + key.size)
         let keyLength   = size_t(key.size)
         var numBytesConverted: size_t = 0
-        var convertedBytes = Data(count: cryptLength)
+        var convertedBytes = Data(count: expectedDataLength)
         
         let cryptStatus = convertedBytes.withUnsafeMutableBytes { cryptBytes in
             message.data.withUnsafeBytes { dataBytes in
                 key.initialVector.withUnsafeBytes { ivBytes in
                     key.secret.withUnsafeBytes { keyBytes in
-                        CCCrypt(CCOperation(action: action), CCAlgorithm(kCCAlgorithmAES), options, keyBytes.baseAddress, keyLength, ivBytes.baseAddress, dataBytes.baseAddress, message.data.count, cryptBytes.baseAddress, cryptLength, &numBytesConverted)
+                        CCCrypt(CCOperation(action: action), CCAlgorithm(kCCAlgorithmAES), options, keyBytes.baseAddress, keyLength, ivBytes.baseAddress, dataBytes.baseAddress, message.data.count, cryptBytes.baseAddress, expectedDataLength, &numBytesConverted)
                     }
                 }
             }
