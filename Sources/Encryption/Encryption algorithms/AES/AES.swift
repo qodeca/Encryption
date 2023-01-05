@@ -11,11 +11,11 @@ public struct AES: Encryption, Decryption {
     let key:     AESKey
     let options: CCOptions
     
-    public func encryptedData(_ message: DecryptedValue) throws -> Data {
+    public func encrypt(_ message: DecryptedValue) throws -> Data {
         try convertAESBytes(message: message, key: key, options: options, action: .encryption)
     }
         
-    public func decryptedData(_ message: EncryptedValue) throws -> Data {
+    public func decrypt(_ message: EncryptedValue) throws -> Data {
         try convertAESBytes(message: message, key: key, options: options, action: .decryption)
     }
     

@@ -14,6 +14,6 @@ public protocol Encryption {
     /// Performs encryption of DecryptedValue to Data
     /// - Parameter message: DecryptedValue object containing data in non-encrypted form.
     /// - Returns: Data with encrypted form of DecryptedValue.
-    func encryptedData(_ message: DecryptedValue) throws -> Data
+    func encrypt(_ message: DecryptedValue) throws -> Data
 
 }

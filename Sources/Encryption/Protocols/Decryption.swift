@@ -13,6 +13,6 @@ public protocol Decryption {
     /// Performs decryption of EncryptedValue to Data
     /// - Parameter message: EncryptedValue object containing data in encrypted form.
     /// - Returns: Data with decrypted form of EncryptedValue
-    func decryptedData(_ message: EncryptedValue) throws -> Data
+    func decrypt(_ message: EncryptedValue) throws -> Data
 
 }

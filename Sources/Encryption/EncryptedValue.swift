@@ -59,7 +59,7 @@ public struct EncryptedValue: EncryptionMessageProtocol {
     /// - Parameter decryption: Algorithm implementation used for decryption.
     /// - Returns: Decrypted form of data as Data.
     public func decrypt(using decryption: Decryption) throws -> Data {
-        try decryption.decryptedData(self)
+        try decryption.decrypt(self)
     }
 
     /// Performs encryption of data
